@@ -47,9 +47,8 @@ async def menu():
 
 
 def get_scrapers():
-	files = os.listdir('./scrapers')
 	sys.path.insert(0, './scrapers')
-	return [__import__(file.replace(".py", "")) for file in files if file.endswith(".py")]
+	return [__import__(file.replace(".py", "")) for file in os.listdir('./scrapers') if file.endswith(".py")]
 
 
 if __name__ == "__main__":
