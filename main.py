@@ -32,11 +32,8 @@ async def menu():
 	ptype = types[int(input())]
 	print(Panel.fit("[yellow bold]Введите файл для вывода[/]"))
 	output = input()
-	if not isfile(output):
-		print(Panel.fit(f"[red] Ошибка! '{output}' - не файл!"))
-		os.abort()
 	for scraper in get_scrapers():
-		if ptype in scraper.Info.supported_types:
+		if ptype in scraper.Info.supported_types and scraper.Info.name == "OpenProxyList":
 			if scraper.Info.scrape_type == "selenium":
 				await scraper.scrape(output, ptype, driver)
 			elif scraper.Info.scrape_type == "aiohttp":

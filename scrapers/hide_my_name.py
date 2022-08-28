@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 import os
 import aiofiles
 
+from utils.wtf import wtf
+from utils.clear import clear
+
 from rich import print
 from rich.panel import Panel
 
@@ -20,17 +23,15 @@ async def scrape(output: str, ptype: str, driver) -> None:
 	pagecount = int(pages.find_element(By.TAG_NAME, 'a').text)
 	scraped = 0
 	types = {"http": "h", "https": "s", "socks4": "4", "socks5": "5"}
+	print(Panel.fit(f"[blue]Доступно прокси: {pagecount * 64}[/]"))
 	for i in range(pagecount):
-		print(Panel.fit(f"[blue bold]Страница: {i}[/]"))
 		driver.get(f'https://hidemy.name/ru/proxy-list/?type={types[ptype]}&start={i*64}#list')
 		rows = driver.find_element(By.XPATH, "/html/body/div[1]/div[4]/div/div[4]/table/tbody")
 		for proxyrow in rows.find_elements(By.TAG_NAME, 'tr'):
 			ip = proxyrow.find_element(By.CSS_SELECTOR, "tr > td:nth-child(1)").get_attribute("innerHTML")
 			port = proxyrow.find_element(By.CSS_SELECTOR, "tr > td:nth-child(2)").get_attribute("innerHTML")
-			async with aiofiles.open(output, 'a+') as f:
-				if f"{ip}:{port}" not in await f.readlines():
-					await f.write(f"{ip}:{port}\n")
+			await wtf(output, f"{ip}:{port}")
 			scraped += 1
-			os.system("clear | cls")
-			print(Panel.fit(f"[blue bold]HideMyName[/]\n[blue]Доступно прокси: {pagecount * 64}[/]\n[green]Scraped: {scraped}[/]"))
+			clear()
+			print(Panel.fit(f"[green]Scraped: {scraped}[/]"))
 

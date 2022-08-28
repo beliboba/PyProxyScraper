@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 import os
 import aiofiles
 
+from utils.clear import clear
+from utils.wtf import wtf
+
 from rich import print
 from rich.panel import Panel
 
@@ -25,13 +28,13 @@ async def scrape(output: str, ptype: str, driver) -> None:
 		os.abort()
 	driver.get('https://free-proxy-list.net/')
 	rows = driver.find_element(By.XPATH, "//*[@id='list']/div/div[2]/div/table/tbody").find_elements(By.TAG_NAME, 'tr')
+	print(Panel.fit(f"[blue]Доступно прокси: {len(rows)}[/]"))
 	for row in rows:
 		ip = row.find_element(By.CSS_SELECTOR, "tr > td:nth-child(1)").get_attribute("innerHTML")
 		port = row.find_element(By.CSS_SELECTOR, "tr > td:nth-child(2)").get_attribute("innerHTML")
 		supports_type = row.find_element(By.CSS_SELECTOR, "tr > td:nth-child(6)").get_attribute("innerHTML")
-		async with aiofiles.open(output, 'a+') as f:
-			if f"{ip}:{port}" not in await f.readlines() and (types[ptype] == supports_type):
-				await f.write(f"{ip}:{port}\n")
+		if types[ptype] == supports_type:
+			await wtf(output, f"{ip}:{port}")
 		scraped += 1
-		os.system("clear | cls")
-		print(Panel.fit(f"[blue bold]FreeProxyList[/]\n[blue]Доступно прокси: {len(rows)}[/]\n[green]Scraped: {scraped}[/]"))
+		clear()
+	print(Panel.fit(f"[green]Scraped: {scraped}[/]"))
