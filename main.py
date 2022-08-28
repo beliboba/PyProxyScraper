@@ -35,9 +35,11 @@ async def menu():
 	for scraper in get_scrapers():
 		if ptype in scraper.Info.supported_types and scraper.Info.name == "OpenProxyList":
 			if scraper.Info.scrape_type == "selenium":
-				await scraper.scrape(output, ptype, driver)
+				scr = await scraper.scrape(output, ptype, driver)
+				print(Panel.fit(f"[blue]{scr[0]}[/][green]Scraped: {scr[1]}[/]"))
 			elif scraper.Info.scrape_type == "aiohttp":
-				await scraper.scrape(output, ptype)
+				scr = await scraper.scrape(output, ptype)
+				print(Panel.fit(f"[blue]{scr[0]}[/][green]Scraped: {scr[1]}[/]"))
 			else:
 				print(Panel.fit(f"[red] Ошибка! Скрапер {scraper.Info.name} имеет неправильную конфигурацию!"))
 

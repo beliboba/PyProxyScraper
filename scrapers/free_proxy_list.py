@@ -16,7 +16,7 @@ class Info:
 	scrape_type = "selenium"
 
 
-async def scrape(output: str, ptype: str, driver) -> None:
+async def scrape(output: str, ptype: str, driver) -> list[str, int]:
 	supported_types = ["http", "https"]
 	types = {
 		"http": "no",
@@ -36,5 +36,4 @@ async def scrape(output: str, ptype: str, driver) -> None:
 		if types[ptype] == supports_type:
 			await wtf(output, f"{ip}:{port}")
 		scraped += 1
-		clear()
-	print(Panel.fit(f"[green]Scraped: {scraped}[/]"))
+	return [Info.name, scraped]

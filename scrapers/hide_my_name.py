@@ -1,10 +1,6 @@
 from selenium.webdriver.common.by import By
 
-import os
-import aiofiles
-
 from utils.wtf import wtf
-from utils.clear import clear
 
 from rich import print
 from rich.panel import Panel
@@ -16,7 +12,7 @@ class Info:
 	scrape_type = "selenium"
 
 
-async def scrape(output: str, ptype: str, driver) -> None:
+async def scrape(output: str, ptype: str, driver) -> list[str, int]:
 	driver.get('https://hidemy.name/ru/proxy-list/')
 	paginator = driver.find_element(By.XPATH, "/html/body/div[1]/div[4]/div/div[5]/ul")
 	pages = paginator.find_element(By.CSS_SELECTOR, "ul > li:nth-last-child(2)")
@@ -32,6 +28,5 @@ async def scrape(output: str, ptype: str, driver) -> None:
 			port = proxyrow.find_element(By.CSS_SELECTOR, "tr > td:nth-child(2)").get_attribute("innerHTML")
 			await wtf(output, f"{ip}:{port}")
 			scraped += 1
-			clear()
-			print(Panel.fit(f"[green]Scraped: {scraped}[/]"))
+			return [Info.name, scraped]
 

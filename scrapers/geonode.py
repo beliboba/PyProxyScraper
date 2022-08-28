@@ -16,7 +16,7 @@ class Info:
 	scrape_type = "aiohttp"
 
 
-async def scrape(output: str, ptype: str) -> None:
+async def scrape(output: str, ptype: str) -> list[str, int]:
 	if ptype in Info.supported_types:
 		async with aiohttp.ClientSession() as session:
 			async with session.get(f'https://proxylist.geonode.com/api/proxy-list?limit=0&page=1&sort_by=lastChecked&sort_type=desc&protocols={ptype}') as response:
@@ -29,4 +29,4 @@ async def scrape(output: str, ptype: str) -> None:
 					await wtf(output, f"{ip}:{port}")
 					scraped += 1
 					clear()
-					print(Panel.fit(f"[blue bold]Geonode[/]\n[blue]Доступно прокси: {len(proxies)}[/]\n[green]Scraped: {scraped}[/]"))
+	return [Info.name, scraped]
