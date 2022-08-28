@@ -10,9 +10,10 @@ from rich.panel import Panel
 class Info:
 	name = "Geonode"
 	supported_types = ["http", "https", "socks4", "socks5"]
+	scrape_type = "aiohttp"
 
 
-async def scrape(output: str, ptype: str):
+async def scrape(output: str, ptype: str) -> None:
 	async with aiohttp.ClientSession() as session:
 		async with session.get(f'https://proxylist.geonode.com/api/proxy-list?limit=0&page=1&sort_by=lastChecked&sort_type=desc&protocols={ptype}') as response:
 			print(Panel.fit(f"[green]Доступно {response.json['total']} прокси[/]"))

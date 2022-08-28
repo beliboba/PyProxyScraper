@@ -10,6 +10,7 @@ from rich.panel import Panel
 class Info:
 	name = "HideMyName"
 	supported_types = ["http", "https", "socks4", "socks5"]
+	scrape_type = "selenium"
 
 
 async def scrape(output: str, ptype: str, driver) -> None:

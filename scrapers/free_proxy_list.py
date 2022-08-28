@@ -10,6 +10,7 @@ from rich.panel import Panel
 class Info:
 	name = "FreeProxyList"
 	supported_types = ["http", "https"]
+	scrape_type = "selenium"
 
 
 async def scrape(output: str, ptype: str, driver) -> None:

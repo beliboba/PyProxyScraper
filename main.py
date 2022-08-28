@@ -35,10 +35,14 @@ async def menu():
 	if not isfile(output):
 		print(Panel.fit(f"[red] Ошибка! '{output}' - не файл!"))
 		os.abort()
-	scrapers = get_scrapers()
-	#for scraper in scrapers:
-	#	if ptype in scraper.Info.supported_types:
-	#		await scraper.scrape()
+	for scraper in get_scrapers():
+		if ptype in scraper.Info.supported_types:
+			if scraper.Info.scrape_type == "selenium":
+				await scraper.scrape(output, ptype, driver)
+			elif scraper.Info.scrape_type == "aiohttp":
+				await scraper.scrape(output, ptype)
+			else:
+				print(Panel.fit(f"[red] Ошибка! Скрапер {scraper.Info.name} имеет неправильную конфигурацию!"))
 
 
 def get_scrapers():
