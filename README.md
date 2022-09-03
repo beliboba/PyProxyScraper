@@ -1,12 +1,12 @@
 # PyProxyScraper
 Asynchronous proxy scraper written in python. Supports various proxy lists
 
-TODO:
+## TODO:
 1. Proxy checker
 2. add more proxy lists
 3. replace selenium with pyppeteer
 
-How to add your proxy lists:
+## How to add your proxy lists:
 1. Create python file in scrapers/
 2. Create class Info with following variables:
     ```python
