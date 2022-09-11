@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxylist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</head>
+<style>
+    body {
+        background: #202124;
+        color: white;
+    }
+    .card {
+        background: #28292c;
+    }
+    .text-muted {
+        color: #d1d1d1 !important;
+    }
+</style>
+<body>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <div class="card" style="width: 32rem;">
+        <div class="card-body"><h4 class="card-title">Бесплатные прокси</h4>
+            <h5 class="card-subtitle mb-2 text-muted">Всего прокси: {{ proxycount }}</h5>
+            <p class="card-text">Ниже выберите тип нужных прокси</p>
+            <a href="{{ http }}" class="btn btn-primary">Http</a>
+            <a href="{{ https }}" class="btn btn-primary">Https</a>
+            <a href="{{ socks4 }}" class="btn btn-secondary">Socks4</a>
+            <a href="{{ socks5 }}" class="btn btn-secondary">Socks5</a>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#donate">💰Donate</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="donate" tabindex="-1" aria-labelledby="donateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="donateLabel">Пожертвовать деньги</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <a href="https://www.tinkoff.ru/cf/4oOZkrC32bv">💳5536913929657605</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ок</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
