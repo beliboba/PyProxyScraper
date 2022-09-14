@@ -22,7 +22,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 
 async def menu():
-	print(Panel.fit(f"[blue bold]Выберите тип прокси для скрапинга:[/]\n1. http\n2. https\n3. socks4\n4. socks5 \n [blue bold]Введите цифру[/]"))
+	print(Panel.fit("[blue bold]Выберите тип прокси для скрапинга:[/]\n1. http\n2. https\n3. socks4\n4. socks5 \n [blue bold]Введите цифру[/]"))
 	types = {
 		1: "http",
 		2: "https",
