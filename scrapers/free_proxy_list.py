@@ -24,7 +24,7 @@ async def scrape(output: str, ptype: str, driver) -> list[str, int]:
 	}
 	scraped = 0
 	if ptype not in supported_types:
-		print(Panel.fit(f"[red]Неподдерживаемый тип прокси. Поддерживаемые типы: http, https[/]"))
+		print(Panel.fit("[red]Неподдерживаемый тип прокси. Поддерживаемые типы: http, https[/]"))
 		os.abort()
 	driver.get('https://free-proxy-list.net/')
 	rows = driver.find_element(By.XPATH, "//*[@id='list']/div/div[2]/div/table/tbody").find_elements(By.TAG_NAME, 'tr')
