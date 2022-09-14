@@ -1,13 +1,9 @@
 import asyncio
 import os
-import inspect
 import sys
-from os.path import isfile
 
 from rich import print
 from rich.panel import Panel
-
-import scrapers
 
 
 from selenium import webdriver
