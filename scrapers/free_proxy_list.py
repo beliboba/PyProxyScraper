@@ -1,9 +1,6 @@
 from selenium.webdriver.common.by import By
 
 import os
-import aiofiles
-
-from utils.clear import clear
 from utils.wtf import wtf
 
 from rich import print

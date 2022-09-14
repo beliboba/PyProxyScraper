@@ -1,6 +1,3 @@
-import os
-
-import aiofiles
 import aiohttp
 
 from utils.wtf import wtf
