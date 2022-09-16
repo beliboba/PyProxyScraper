@@ -1,4 +1,5 @@
 import aiofiles
+import uvicorn
 from sanic import Sanic, text, html
 from sanic_jinja2 import SanicJinja2
 
@@ -31,4 +32,4 @@ async def index(request):
 
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=1337)
+	uvicorn.run(app, host='0.0.0.0', port=1337, log_level='info', debug=False, workers=4)
