@@ -9,7 +9,6 @@ from rich.panel import Panel
 class Info:
 	name = "Roosterkid proxy list"
 	supported_types = ["https", "socks4", "socks5"]
-	scrape_type = "aiohttp"
 
 
 async def scrape(output: str, ptype: str) -> list[str, int]:
