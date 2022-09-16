@@ -1,7 +1,9 @@
 import aiofiles
 from sanic import Sanic, text, html
+from sanic_jinja2 import SanicJinja2
 
-app = Sanic("app")
+app = Sanic("main")
+jinja = SanicJinja2(app, pkg_name="main", pkg_path="templates")
 ptypes = ["http", "https", "socks4", "socks5"]
 
 
@@ -13,7 +15,7 @@ async def proxies(request, ptype: str):
 
 
 @app.route('/')
-@app.ext.template('index.html')
+@jinja.template('index.html')
 async def index(request):
 	count = 0
 	for ptype in ptypes:
@@ -29,4 +31,4 @@ async def index(request):
 
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=1337)
+	app.run(host='127.0.0.1', port=1337)
