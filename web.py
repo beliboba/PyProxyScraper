@@ -38,4 +38,4 @@ ssl = {
 
 
 if __name__ == "__main__":
-	uvicorn.run(app, host='0.0.0.0', port=1337, log_level='info', debug=False, sslcertfile=ssl['cert'], sslkeyfile=ssl['key'])
+	uvicorn.run(app, host='0.0.0.0', port=1337, log_level='info', debug=False, ssl_certfile=ssl['cert'], ssl_keyfile=ssl['key'])
