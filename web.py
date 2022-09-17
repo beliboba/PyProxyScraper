@@ -31,5 +31,11 @@ async def index(request):
 	}
 
 
+ssl = {
+	"cert": "/etc/letsencrypt/live/proxy.italks.su/cert.pem",
+	"key": "/etc/letsencrypt/live/proxy.italks.su/key.pem"
+}
+
+
 if __name__ == "__main__":
 	uvicorn.run(app, host='0.0.0.0', port=1337, log_level='info', debug=False)
