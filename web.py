@@ -33,7 +33,7 @@ async def index(request):
 
 ssl = {
 	"cert": "/etc/letsencrypt/live/proxy.italks.su/cert.pem",
-	"key": "/etc/letsencrypt/live/proxy.italks.su/key.pem"
+	"key": "/etc/letsencrypt/live/proxy.italks.su/privkey.pem"
 }
 
 
