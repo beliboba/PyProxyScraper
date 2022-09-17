@@ -21,8 +21,9 @@
 <body>
 <div class="position-absolute top-50 start-50 translate-middle">
     <div class="card" style="width: 32rem;">
-        <div class="card-body"><h4 class="card-title">Бесплатные прокси</h4>
+        <div class="card-body"><h4 class="card-title">Бесплатный список прокси</h4>
             <h5 class="card-subtitle mb-2 text-muted">Всего прокси: {{ proxycount }}</h5>
+            <p class="card-text">Список прокси обновляется каждый час. Отобраны максимально быстрые прокси</p>
             <p class="card-text">Ниже выберите тип нужных прокси</p>
             <a href="{{ http }}" class="btn btn-primary">Http</a>
             <a href="{{ https }}" class="btn btn-primary">Https</a>
@@ -32,7 +33,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="donate" tabindex="-1" aria-labelledby="donateLabel" aria-hidden="true" style="color: #28292c">
+<div class="modal fade" id="donate" tabindex="-1" aria-labelledby="donateLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
