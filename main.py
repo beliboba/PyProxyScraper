@@ -7,15 +7,14 @@ from rich.panel import Panel
 
 
 async def menu():
-	ptypes = ['http', 'https', 'socks4', 'socks5']
-	for ptype in ptypes:
-		await scrape(ptype)
-		print(Panel.fit(f"[green]Done[/]"))
+	await scrape('http')
+	await scrape('https')
+	await scrape('socks4')
+	await scrape('socks5')
 
 
 async def scrape(ptype: str):
 	output = f'./proxies/{ptype}.txt'
-
 	for scraper in get_scrapers():
 		if ptype in scraper.Info.supported_types and scraper.Info.name:
 			await scraper.scrape(output, ptype)
