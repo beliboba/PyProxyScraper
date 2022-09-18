@@ -6,7 +6,7 @@ import argparse
 
 async def menu():
 	for scraper in get_scrapers():
-		if ptype in scraper.Info.supported_types and scraper.Info.name:
+		if ptype in scraper.Info.supported_types:
 			await scraper.scrape(output, ptype)
 
 
