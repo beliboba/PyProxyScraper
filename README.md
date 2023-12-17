@@ -8,7 +8,7 @@ Asynchronous proxy scraper written in python. Supports various proxy lists
 
 ## How to add your proxy lists:
 1. Create python file in scrapers/
-   2. Create class Info with following variables:
+2. Create class Info with following variables:
 ```python
 class Info:
    name = ""
